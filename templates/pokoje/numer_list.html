@@ -1,0 +1,12 @@
+<div id="zapis">
+
+	{% if latest_numer_list %}
+	
+		{% for numer in latest_numer_list %}
+	    	<h1>{{ numer.numerek }}</h1>
+		{% endfor %}
+		
+	{% else %}
+	    <p>No number are available.</p>
+	{% endif %}
+</div>

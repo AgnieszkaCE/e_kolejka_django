@@ -1,0 +1,15 @@
+<html>
+	<h1> Strona glowna </h1>
+	<div>
+      {{ user }}
+      {% if user.is_anonymous %}
+      <a href="{% url 'django.contrib.auth.views.login' %}">login</a>
+      {% else %}
+      <a href="{% url 'logowanie.views.logoutview' %}">logout</a>
+      {% endif %}
+    </div>	
+    <div>
+    	<a href="{% url 'pokoje' %}">Wybierz Pokoj</a>
+    </div>
+    
+</html>

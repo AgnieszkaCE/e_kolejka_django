@@ -1,0 +1,25 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+{% load staticfiles %}
+<html>
+	<head>
+		<title>Pokoj</title>
+	</head>
+	<body>
+
+	<h1> Pokoje</h1>
+	
+{% if latest_pokoje_list %}
+    <ul>
+    {% for pokoj in latest_pokoje_list %}
+        <li><a href="/{{ pokoj.id }}/">{{ pokoj.nazwa }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No rooms are available.</p>
+{% endif %}
+
+	 <div>
+    	<a href="{% url 'logowanie.views.index' %}">Strona glowna</a>
+    </div>
+	</body>
+</html>
