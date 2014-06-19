@@ -1,14 +1,8 @@
 
 from django.contrib.auth.models import User
-from django.core.urlresolvers import reverse
-from django.http import request
-from django.http.request import HttpRequest
 from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
-from django.shortcuts import render
-from django.template.context import Context, RequestContext
 from django.views import generic
-
 from pokoje.models import Numer
 from pokoje.models import Pokoj
 
@@ -31,22 +25,31 @@ class PokojView(generic.ListView):
 
     def get_queryset(self):
         """Return the last five published polls."""
-        return Pokoj.objects.order_by('-nazwa')[:5]
+        return Pokoj.objects.order_by('-nazwa')
     
-    #def numerek(self):
-    #    return Numer.objects.order_by('-id')[0] 
-    #return HttpResponse("Numer: %s" % ostatni.numerek)
 
-class DetailView(generic.ListView):
+class NumerView(generic.ListView):
     model = Numer
     template_name = 'pokoje/detail.html'
     context_object_name = 'latest_numer_list'
     
     def get_queryset(self):
         """Return the last five published polls."""
-        return Numer.objects.order_by('-numerek')[:1]
+        pk = self.kwargs['pk']
+        #return Numer.objects.order_by('-numerek')[:1]
+        return Numer.objects.filter(id_pokoj = pk).order_by('-numerek')[:1]
     
-
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super(NumerView, self).get_context_data(**kwargs)
+        # Add something
+        pk = self.kwargs['pk']
+        zmienna = Pokoj.objects.filter(id = pk)[0]
+        context['nazwa_pokoju'] = zmienna.nazwa
+        return context
+  
+        
+                         
   
 def vote(self, pk):
 

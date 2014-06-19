@@ -18,7 +18,7 @@ urlpatterns = patterns('',
     
     #od pokoju 
     url(r'^pokoj/$', views.PokojView.as_view(), name='pokoje'),
-    url(r'^(?P<pk>\d+)/$', views.DetailView.as_view(), name='detail'),
+    url(r'^(?P<pk>\d+)/$', views.NumerView.as_view(), name='numer'),
     url(r'^(?P<pk>\d+)/vote/$', 'pokoje.views.vote', name='vote'),
     url(r'^(?P<pk>\d+)/ost/$', 'pokoje.views.ostatni', name='ostatni'),
     #url(r'^numer/$', views.NumerView.as_view(), name='numer'),

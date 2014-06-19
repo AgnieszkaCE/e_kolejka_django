@@ -6,16 +6,18 @@ from pokoje.models import Numer
 class PokojAdmin(admin.ModelAdmin):
     
     fieldsets = [
-        ("Nazwa",               {'fields': ['nazwa']}),
-        ("Informacje", {'fields': ['informacje'], 'classes': ['collapse']}),
+        (None,               {'fields': ['nazwa']}),
+        ("Informacje", {'fields': ['informacje']}),
     ]
+    list_display=('nazwa','informacje')
 admin.site.register(Pokoj, PokojAdmin)
 
 class NumerAdmin(admin.ModelAdmin):
     
     fieldsets = [
-        ("Id Urzytkownika",  {'fields': ['id_user']}),
+        (None,  {'fields': ['id_user']}),
        ("Id Pokoju",   {'fields': ['id_pokoj']}),
-       ("Numerek",   {'fields': ['numerek']}),
+       ("Numerek",   {'fields': ['numerek']}),  
     ]
+    list_display = ('id_user', 'id_pokoj', 'numerek')
 admin.site.register(Numer, NumerAdmin)

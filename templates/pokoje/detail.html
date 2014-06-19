@@ -1,18 +1,20 @@
+{% load staticfiles %}
 <html>
 
 	<head>
 	<title>Pokoj</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
 	</head>
 	<body>
-	<h1> Pokoj </h1>
-	<h1>{{ pokoj.nazwa }}</h1>
+	<div class = "tresc">
 	
-	
+	<h1>{{ nazwa_pokoju }}</h1>
 	
 
 	{% if latest_numer_list %}
-	
+		
 		{% for numer in latest_numer_list %}
+			
 	    	<h1>{{ numer.numerek }}</h1>
 		{% endfor %}
 		
@@ -23,7 +25,7 @@
 	<form action="vote" method="GET">
         <input type="submit" value="Pobierz numerek"> 
     </form>
-	
+
 	
 	</body>
 </html>
