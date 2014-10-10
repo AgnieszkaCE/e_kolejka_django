@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+{% load staticfiles %}
+<html>
+	<head>
+		<title>Info</title>
+		<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+		
+	</head>
+	<body>
+	<img src="{% static "logok.png" %}" class="naglowek" alt="ekolejka" />
+	<div class = "dane">
+		{% if pracownik %}
+		<h1>Infromacje o pokojach</h1>
+		
+			{% if info_list %}
+			 <table>   
+			 		<th>Temat</th><th>Data</th><th>Tresc</th><th>Pokoj</th>
+			    {% for info in info_list %}
+				    <tr>
+						<td>{{ info.temat}}</td><td>{{ info.data }}</td>
+						<td>{{ info.tresc }}</td><td>{{ info.p }}</td>
+						<td><a id ="b4" href="{% url 'usunInfo' info.id %}">Usuń</a></td>
+						
+					</tr>
+			    {% endfor %}
+			 </table>
+			{% else %}
+			    <p>Brak dodanych informacji. </p>
+		
+			{% endif %}
+		
+	    	
+	    	<a id ="buttonpage" class = "button" href="{% url 'form' %}">Dodaj Informację</a>
+	    	<a id ="buttonpage" class = "button" href="{% url 'pracList' %}">Lista Pokoi</a>
+	    	<a id ="buttonpage" class = "button" href="{% url 'index' %}">Strona Główna</a>
+    	{% else %}
+			<p>Przepraszamy, nie jesteś pracownikiem</p>
+		{% endif %}
+    </div>
+	</body>
+</html>

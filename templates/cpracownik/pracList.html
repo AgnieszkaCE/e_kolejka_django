@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+{% load staticfiles %}
+
+<html>
+	<head>
+		<title>Pokoje</title>
+		<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+		
+	</head>
+	<body>
+	<img src="{% static "logok.png" %}" class="naglowek" alt="ekolejka" />
+	
+	<div class = "dane">
+			
+	{% if pracownik %}
+		<h1> Pokoje</h1>
+		{% if prac_list %}
+		    <ul>
+		    {% for pokoj in prac_list %}
+		        <p><a id ="b1" class = "button" href="pracownik/{{ pokoj.id }}/">{{ pokoj.nazwa }}</a></p>
+		    {% endfor %}
+		    </ul>
+		{% else %}
+			<p>Nie ma widocznych pokoi</p>
+		{% endif %}
+	
+		
+		<a id ="buttonpage" class = "button" href="{% url 'infoList' %}">Lista Informacji</a>
+		<a id ="buttonpage" class = "button" href="{% url 'form' %}">Dodaj Informację</a>
+		<a id ="buttonpage" class = "button" href="{% url 'index' %}">Strona Głowna</a>
+	{% else %}
+	<p>Przepraszamy, nie jesteś pracownikiem</p>
+	{% endif %}
+    </div>
+	</body>
+</html>

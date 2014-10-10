@@ -1,0 +1,17 @@
+{% load staticfiles %}
+<html>
+
+	<head>
+		<title>E-kolejka</title>
+		<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+	</head>
+	<body>
+	<img src="{% static "logok.png" %}" class="naglowek" alt="ekolejka" />
+	<div class = "dane">
+	
+		<p>Przepraszam już posiadasz numerek<p>
+		<a id ="buttonpage" class = "button" href="{% url 'pokoje' %}">Powrót</a>
+	</body>
+</html>
+
+

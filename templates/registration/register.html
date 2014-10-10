@@ -1,0 +1,22 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Rejestracja</title>
+		<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+	</head>
+	<body>
+	<img src="{% static "logok.png" %}" class="naglowek" alt="ekolejka" />
+		<div class = "dane">
+		
+			<h2>Rejestracja</h2>
+			<form action="/register/" method="post">{% csrf_token %}
+				
+				{{form}}
+				<input type="submit" value="Rejestracja" />
+				
+			</form>
+		</div>
+	</body>
+</html>
+

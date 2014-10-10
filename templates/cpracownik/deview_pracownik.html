@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+{% load staticfiles %}
+<html>
+	<head>
+		<title>Pokoj</title>
+		<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+		
+	</head>
+	<body>
+	<img src="{% static "logok.png" %}" class="naglowek" alt="ekolejka" />
+	
+	<div class = "dane">
+	{% if pracownik %}
+		<h1> Lista Petentów</h1>
+		
+			{% if numer %}
+				<table>
+						<tr>
+							<th>Imie</th><th>Nazwisko</th><th>Pokoj</th><th>Numerek</th><th>Stan</th>
+						</tr>
+					{% for pole in numer %}
+						<tr>
+							<td>{{ pole.id_user.first_name }}</td><td>{{ pole.id_user.last_name}}</td>
+							<td>{{ pole.id_pokoj }}</td><td>{{ pole.numerek }}</td>
+							<td><a id="b4" href="{% url 'usun' pole.id %}">Usuń</a></td>
+						</tr>
+					{% endfor  %}
+				</table>
+			{% else %}
+			    <p>Brak zapisanych</p>
+			    
+			{% endif %}
+		</table>
+	    	
+	    	<a id ="buttonpage" class = "button" href="{% url 'pracList' %}">Lista Pokoi</a>
+	    	<a id ="buttonpage" class = "button" href="{% url 'index' %}">Strona Głowna</a>
+	{% else %}
+		<p>Przepraszamy, nie jesteś pracownikiem</p>
+	{% endif %}
+    </div>
+	</body>
+</html>

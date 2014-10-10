@@ -1,0 +1,35 @@
+{% load staticfiles %}
+
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Twoje numerki</title>
+		<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+	</head>
+	<body>
+	<img src="{% static "logok.png" %}" class="naglowek" alt="ekolejka" />
+		<div class = "dane">
+	
+		    {% if user.is_authenticated %}
+		    
+		    	<h1>Twoje Numerki</h1>
+		    	
+		 		{% for numer in zapisane %}
+				
+		    		<p id ="b3">{{ numer.id_pokoj }}<br> Numer: {{ numer.numerek }}</br></p>
+		    		
+				{% endfor %}
+				
+				<p><a id ="buttonpage" class = "button" href="{% url 'index' %}">Strona Głowna</a><p>
+				
+		    {% else %}
+		    
+		    	<p> Zaloguj się lub zarejestruj</p>
+		    	<a id ="buttonpage" class = "button" href="{% url 'django.contrib.auth.views.login' %}">Logowanie</a>
+		    	<a id ="buttonpage" class = "button" href="{% url 'rejestracja.views.register_user' %}">Rejestracja</a>
+		    
+		    {% endif %}
+	    </div>
+    </body>
+</html>

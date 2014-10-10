@@ -2,31 +2,34 @@
 <html>
 
 	<head>
-	<title>Pokoj</title>
-	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+		<title>Numerki</title>
+		<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
 	</head>
 	<body>
-	<div class = "tresc">
+	<img src="{% static "logok.png" %}" class="naglowek" alt="ekolejka" />
+	<div class = "dane">
 	
-	<h1>{{ nazwa_pokoju }}</h1>
-	
-
-	{% if latest_numer_list %}
+		<h1>{{ nazwa_pokoju }}</h1>
+		<form action="vote" method="GET">
+	        <input id="pobierz" type="submit" value="Pobierz Numerek"> 
+	    </form>
 		
-		{% for numer in latest_numer_list %}
+		{% if latest_numer_list %}
 			
-	    	<h1>{{ numer.numerek }}</h1>
-		{% endfor %}
-		
-	{% else %}
-	    <p>No number are available.</p>
-	{% endif %}
-
-	<form action="vote" method="GET">
-        <input type="submit" value="Pobierz numerek"> 
-    </form>
-
+			{% for numer in latest_numer_list %}
+				<p id= "text">Proszony jest numer:</p>
+		    	<p id="numer">{{ numer.numerek }}</p>
+			
+			{% endfor %}
+			
+		{% else %}
+		    <p>Jesteś pierwszy :)</p>
+		    
+		{% endif %}
 	
+		
+	
+		<a id ="buttonpage" class = "button" href="{% url 'pokoje' %}">Powrót</a>
 	</body>
 </html>
 

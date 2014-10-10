@@ -1,0 +1,34 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Form Info</title>
+		<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+	</head>
+	<body>
+		<img src="{% static "logok.png" %}" class="naglowek" alt="ekolejka" />
+		<div class = "dane">
+			<h2>Formularz do dodawania informacji</h2>
+			
+	 		{% if user.is_authenticated %}
+	 			
+		    	<form method="post" action="{% url 'form' %}">{% csrf_token %}
+		    	
+					{{ form }}
+					<input type="submit" name = "submit" value = "Dodaj">
+					
+				</form>
+				<p><a id ="buttonpage" class = "button" href="{% url 'pracList' %}">Lista Pokoi</a></p>
+				
+		    {% else %}
+				<p> Zaloguj się lub zarejestruj</p>
+		    	<a id ="buttonpage" class = "button" href="{% url 'django.contrib.auth.views.login' %}">Logowanie</a>
+		    	<a id ="buttonpage" class = "button" href="{% url 'rejestracja.views.register_user' %}">Rejestracja</a>
+		   
+			
+		    {% endif %}
+	    
+	    </div>
+    </body>
+</html>

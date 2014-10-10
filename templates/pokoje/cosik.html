@@ -1,0 +1,44 @@
+
+<html>
+
+<body>
+
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'ok' %}" method="post">
+{% csrf_token %}
+	{%if poll %}
+	<label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label>
+	<select name="choice" id="choice.id">
+	<option value="" selected="selected">---------</option>
+	{% for choice in poll %}
+	 <option value="{{ choice.id }}">{{ choice.nazwa }}</option>
+	 
+	{% endfor %}
+	</select>
+<input type="submit" value="Wybór" />
+</form>
+{% if numer %}
+	<p>Zapisane numery</p>
+				<table>
+						<tr>
+							<th>Imie</th><th>Nazwisko</th><th>Pokoj</th><th>Numerek</th><th>Stan</th>
+						</tr>
+					{% for pole in numer %}
+						<tr>
+							<td>{{ pole.id_user.first_name }}</td><td>{{ pole.id_user.last_name}}</td>
+							<td>{{ pole.id_pokoj }}</td><td>{{ pole.numerek }}</td>
+							<td><a href="{% url 'usun' pole.id %}">Usuń</a></td>
+						</tr>
+					{% endfor  %}
+				</table>
+			{% else %}
+			    <p>Brak zapisanych</p>
+			    
+{% endif %}
+	
+		<a href="{% url 'index' %}">Powrot</a>
+	{% endif %}
+</body>
+</html>

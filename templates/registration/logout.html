@@ -1,0 +1,16 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Wylogowany</title>
+		<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+	</head>
+	<body>
+		<img src="{% static "logok.png" %}" class="naglowek" alt="ekolejka" />
+		<div class = "dane">
+			<h1>Wylogowany!</h1>
+			<a id ="buttonpage" class = "button" href="{% url 'index' %}">Strona Główna</a>
+		</div>
+	</body>
+</html>
+

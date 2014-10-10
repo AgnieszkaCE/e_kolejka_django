@@ -1,0 +1,21 @@
+<html>
+<body>
+{% if numer %}
+				<table>
+						<tr>
+							<th>Imie</th><th>Nazwisko</th><th>Pokoj</th><th>Numerek</th><th>Stan</th>
+						</tr>
+					{% for pole in numer %}
+						<tr>
+							<td>{{ pole.id_user.first_name }}</td><td>{{ pole.id_user.last_name}}</td>
+							<td>{{ pole.id_pokoj }}</td><td>{{ pole.numerek }}</td>
+							<td><a href="{% url 'usun' pole.id %}">Usuń</a></td>
+						</tr>
+					{% endfor  %}
+				</table>
+			{% else %}
+			    <p>Brak zapisanych</p>
+			    
+{% endif %}
+</body>
+</html>

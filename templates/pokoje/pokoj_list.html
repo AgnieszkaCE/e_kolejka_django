@@ -1,29 +1,35 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 {% load staticfiles %}
+{% load static %}
 <html>
 	<head>
-		<title>Pokoj</title>
+		<title>Pokoje</title>
 		<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
 		
 	</head>
 	<body>
-	<div class = "tresc">
-
-	<h1> Pokoje</h1>
+	<img src="{% static "logok.png" %}" class="naglowek" alt="ekolejka" />
+	<div class = "dane">
 	
-		{% if latest_pokoje_list %}
-		    <ul>
-		    {% for pokoj in latest_pokoje_list %}
-		        <li><a href="/{{ pokoj.id }}/">{{ pokoj.nazwa }}</a></li>
-		    {% endfor %}
-		    </ul>
-		{% else %}
-		    <p>No rooms are available.</p>
-		{% endif %}
-
-	 <div>
-    	<a href="{% url 'logowanie.views.index' %}">Strona glowna</a>
-    </div>
+		<h1 id="nazwa">Pokoje</h1>
+	
+		{% if user.is_authenticated %}
+			{% if latest_pokoje_list %}
+			    <ul>
+			    {% for pokoj in latest_pokoje_list %}
+			      <p><a id ="b1" class = "button" href="/{{ pokoj.id }}/">{{ pokoj.nazwa }}</a><p>
+			    {% endfor %}
+			    </ul>
+			{% else %}
+			    <p>Brak Pokoi</p>
+			{% endif %}
+	
+	   {% else %}
+	    	<p> Zaloguj się lub zarejestruj, aby móc wybrać pobój</p>
+	    	<a href="{% url 'django.contrib.auth.views.login' %}">Logowanie</a>
+	    	<a href="{% url 'rejestracja.views.register_user' %}">Rejestracja</a>
+	   {% endif %}
+    	<p><a id ="buttonpage" class = "button" href="{% url 'index' %}">Strona Główna</a><p>
     </div>
 	</body>
 </html>
