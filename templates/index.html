@@ -5,22 +5,50 @@
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+		<title>E-kolejka</title>
 	</head>
 	<body>
-		<div class = "tresc">
-			<h1> Strona glowna </h1>
-			<h3>E-kolejka rozwiązanie systemu numerków w kolejce poprzez wykorzystanie serwisu internetowego</h3>
-		
 		<div class = "user">
-	      {{ user }}
-	      {% if user.is_anonymous %}
-	      <a href="{% url 'django.contrib.auth.views.login' %}">login</a>
-	      {% else %}
-	      <a href="{% url 'logowanie.views.logoutview' %}">logout</a>
-	      {% endif %}
+		     	{{ user }}
+		      {% if user.is_anonymous %}
+		       
+		      	<a href="{% url 'django.contrib.auth.views.login' %}">Login</a>
+		      {% else %}
+		      	<a href="{% url 'logowanie.views.logoutview' %}">Wylogój</a>
+		      {% endif %}
 	    </div>	
-	    
-	    	<a href="{% url 'pokoje' %}">Wybierz Pokoj</a>
+		<img src="static/logok.png" class="naglowek" alt="ekolejka" />
+		<div class = "tresc">
+		
+		
+		    {% if user.is_authenticated %}
+		    	<p><a id ="b1" class = "button" href="{% url 'pokoje' %}"><span>Wybierz Pokoj</span></a></p>
+		 		<p><a id ="b2"class = "button" href="{% url 'zapisane' %}"><span>Twoje numerki</span></a></p>
+		    {% else %}
+		    	<p> Zaloguj się lub zarejestruj, aby móc wybrać pobój</p>
+		    	<a id ="buttonpage" class = "button" href="{% url 'django.contrib.auth.views.login' %}">Logowanie</a>
+		    	<a id ="buttonpage" class = "button" href="{% url 'rejestracja.views.register_user' %}">Rejestracja</a>
+		    {% endif %}
+		
+		</div>
+	
+		<div class = "info">
+		    	<b><p>Aktualne informacje: </p></b>
+			     {% for inf in info_list %}
+				        <p  class = "in">Temat: {{ inf.temat }}</p>
+				        <p  class = "in">Data: {{ inf.data }}</p>
+				        {% if inf.p %}
+				       		<p  class = "in">Pokoj: {{ inf.p }}</p>
+				  		{% else %}
+				  			<p  class = "in">Wszystkie Pokoje</p>
+				  		{% endif %}
+				        <p  class = "in">Tresc: {{ inf.tresc}}</p>
+				      
+				      
+				 {% endfor %}
+			
+	
 	    </div>
+	    
     </body>
 </html>

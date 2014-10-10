@@ -1,22 +1,18 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import logout
 from django.core.exceptions import ObjectDoesNotExist
-from django.core.urlresolvers import reverse
 from django.http.response import Http404
 from django.shortcuts import render
 from django.utils.decorators import method_decorator
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 
-from logowanie.models import Contact
+from logowanie.models import Logowanie
 
-
-def index(request):
-    return render(request, 'index.html')
 
 def logoutview(request):
     logout(request)
-    return render(request, 'logout.html')
+    return render(request, 'registration/logout.html')
 
 class LoggedInMixin(object):
 
@@ -27,23 +23,20 @@ class LoggedInMixin(object):
 
 class ListContactView(LoggedInMixin, ListView):
 
-    model = Contact
+    model = Logowanie
     template_name = 'index.html'
 
     def get_queryset(self):
 
-        return Contact.objects.filter(owner=self.request.user)
+        return Logowanie.objects.filter(owner=self.request.user)
 
 class ContactView(LoggedInMixin, DetailView):
 
-    model = Contact
+    model = Logowanie
     template_name = 'index.html'
 
 
     def get_object(self, queryset=None):
-        """Returns the object the view is displaying.
-
-        """
 
         if queryset is None:
             queryset = self.get_queryset()

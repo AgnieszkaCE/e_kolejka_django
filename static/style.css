@@ -1,9 +1,8 @@
 body {
-	background-color: #414659;
-	font-family: Verdana, "Times New Roman", Times, serif;
+	background-color: #51546b;
+	font-family:Arial, Helvetica, sans-serif;
 	
 }
-
 
 
 * {
@@ -11,20 +10,156 @@ body {
 	padding: 0;
 }
 
-div {
-	margin-top: 100px;
+
+img {
+	
+	display: block;
 	margin-left: auto;
 	margin-right: auto;
+	border: none;
+}
+input { 
+	margin: 10px;
 	padding: 10px;
+	font-size: 10px; 
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+}
+#pobierz { 
+	
+	margin-top: 20px;
+	font-size: 20px;
+	background-color: #5fb9c2;
+}
+div {
+	
+	margin-left: auto;
+	margin-right: auto;
+	padding: 20px;
+	width: 1024px;
+	
+	background-color: #ffffff;
+	text-decoration:none;
 }
 div.tresc{
-	
-	width: 1024px;
-	height:400px;
-	background-color: #FFFFFF;
+	-webkit-border-top-right-radius: 10px;
+	-webkit-border-top-left-radius: 10px;
+	margin-top:10px;
+	min-height: 200px;
 
 }
-div.user{
-	text-align: right;
+div.dane{
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	margin-top:10px;
+	min-height: 200px;
+
+}
+
+div.info{
 	
+	-webkit-border-bottom-right-radius: 10px;
+	-webkit-border-bottom-left-radius: 10px;
+	 margin-bottom: 100px;
+	
+}
+p.info{
+	margin-left: auto;
+	
+}
+
+
+div.user{
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	padding: 20px;
+	text-align: right;
+	width: 1024px;
+	height: 20px;
+	background-color: #b9a3c9;
+	
+}
+
+a.button {
+	text-decoration:none;
+	text-align:center;
+	color:black;
+	font-size:20px;
+	
+
+
+}
+
+
+#b1, #b2{
+	background-image: url(/static/button.png) ;
+	padding: 20px;
+	margin-top: 20px;
+	text-decoration:none;
+	width:260px;
+	height:21px;
+	border:0;
+	display:block;
+	margin-left: auto;
+	margin-right: auto;
+}
+#buttonpage{
+	background-image: url(/static/stronaGlowna.png);
+	padding: 10px;
+	margin-top: 20px;
+	text-decoration:none;
+	width:180px;
+	height:20px;
+	border:0;
+	display:block;
+}
+
+#text{
+	text-align:center;
+}
+
+#numer{
+	background-image: url(/static/numer.png) ;
+	text-align:center;
+	font-size: 100;
+	padding: 45px;
+	margin-top: 5px;
+	text-decoration:none;
+	width:110px;
+	height:110px;
+	border:0;
+	display:block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#b3{
+	background-image: url(/static/button.png) ;
+	padding: 10px;
+	margin-top: 20px;
+	text-decoration:none;
+	width:280px;
+	height:40px;
+	border:0;
+	display:block;
+	text-align:center;
+	margin-left: auto;
+	margin-right: auto;
+}
+#b4{
+	text-decoration:none;
+	background-color: #d7cdc6;
+	padding: 10px;
+	text-decoration:none;
+	width: 50px;
+	height: 20px;
+	border:0;
+	display:block;
+	text-align:center;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px
+
+}
+table {
+  border-spacing: 1rem;
 }
