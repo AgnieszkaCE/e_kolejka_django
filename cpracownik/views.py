@@ -12,7 +12,7 @@ from cpracownik.models import Info
 from pokoje.models import Numer
 from pokoje.models import Pokoj
 
-
+#test 
 def w_grupie(request):
     grup = Group.objects.get(name='Pracownicy')
     user = request.user
