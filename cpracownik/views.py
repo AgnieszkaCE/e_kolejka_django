@@ -20,7 +20,7 @@ def w_grupie(request):
         prac = 1
     else:
         prac = 0
-#kom
+
     return prac
     
 def pracview(request):
