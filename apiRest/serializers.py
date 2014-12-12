@@ -7,7 +7,7 @@ class PokojSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Pokoj
-        fields = ('id', 'nazwa')
+        fields = ('id','nazwa')
         
 class NumerSerializer(serializers.ModelSerializer):
     

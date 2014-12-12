@@ -10,9 +10,10 @@ from pokoje.models import Pokoj, Numer
 
 class PLista(APIView):
     def get(self, request, format=None):
-        p = Pokoj.objects.all()
-        serializer_pokoj = PokojSerializer(p)
+        serializer_pokoj = PokojSerializer(Pokoj.objects.all(), many=True)
         return Response(serializer_pokoj.data)
+
+
 class PDetail(APIView):
     def get_object(self, pk):
         try:
